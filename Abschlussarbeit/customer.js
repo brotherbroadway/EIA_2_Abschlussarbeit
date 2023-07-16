@@ -386,7 +386,7 @@ Quellen: -
             this.selected = false;
             EIA2SoSe23_Abschlussarbeit.waitingSelectedID = -2;
             if (_creamID == this.myIcecream.id && EIA2SoSe23_Abschlussarbeit.waffleCheck.checked === this.myIcecream.waffle) {
-                //console.log("YES THAT'S IT");
+                console.log("Served correct icecream!");
                 this.updateRating(0.5 + this.rating * 0.05);
                 // update status
                 if (this.checkSeats()) {
@@ -410,7 +410,7 @@ Quellen: -
                 this.updateRating(-3);
                 EIA2SoSe23_Abschlussarbeit.firstIcecream = false;
                 EIA2SoSe23_Abschlussarbeit.correctIcecream = false;
-                //console.log("NO I DON'T WANT THAT");
+                console.log("Served WRONG icecream.");
             }
             return false;
         }

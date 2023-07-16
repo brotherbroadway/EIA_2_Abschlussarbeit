@@ -453,7 +453,7 @@ Quellen: -
             waitingSelectedID = -2;
 
             if (_creamID == this.myIcecream.id && waffleCheck.checked === this.myIcecream.waffle) {
-                //console.log("YES THAT'S IT");
+                console.log("Served correct icecream!");
 
                 this.updateRating(0.5 + this.rating * 0.05);
                 
@@ -481,7 +481,7 @@ Quellen: -
 
                 firstIcecream = false;
                 correctIcecream = false;
-                //console.log("NO I DON'T WANT THAT");
+                console.log("Served WRONG icecream.");
             }
 
             return false;
