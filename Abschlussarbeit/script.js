@@ -209,6 +209,7 @@ Quellen: -
         if (EIA2SoSe23_Abschlussarbeit.shopOpen) {
             // always spawn one customer after first shop open
             if (frameSinceShopOpen < 0) {
+                console.log("Spawned new customer (tutorial)");
                 spawnNewCustomer();
                 frameSinceShopOpen = 9001;
             }
@@ -218,16 +219,23 @@ Quellen: -
                 //       - random spawn chance,
                 //       - if there's any icecream even available,
                 //       - and how many customers there are total
-                if (lastInstructionCount < 20 && framesSinceLastSpawn < 0 && Math.random() < spawnChance && EIA2SoSe23_Abschlussarbeit.savedCreams.length > 0 && customerCount < 13) {
-                    console.log("Spawned new customer");
-                    spawnNewCustomer();
-                    framesSinceLastSpawn = 20;
+                if (lastInstructionCount < 20 && EIA2SoSe23_Abschlussarbeit.savedCreams.length > 0 && customerCount < 13) {
+                    if (framesSinceLastSpawn < 0 && Math.random() < spawnChance) {
+                        console.log("Spawned new customer (" + (Math.floor(spawnChance * 1000) / 10) + "% chance)");
+                        spawnNewCustomer();
+                        framesSinceLastSpawn = 20;
+                    }
+                    else if (framesSinceLastSpawn < -80) {
+                        console.log("Spawned new customer (timer)");
+                        spawnNewCustomer();
+                        framesSinceLastSpawn = 20;
+                    }
                 }
                 frameSinceShopOpen--;
             }
         }
         framesSinceLastSpawn--;
-        //console.log(frameSinceShopOpen, framesSinceLastSpawn, lastInstructionCount);
+        //console.log(framesSinceLastSpawn, lastInstructionCount);
     }
     // spawns new customer
     function spawnNewCustomer() {
