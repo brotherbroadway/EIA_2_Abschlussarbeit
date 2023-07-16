@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abschlussarbeit</title>
+    <script src="moveable.js" defer>moveable.ts</script>
+    <script src="customer.js" defer>customer.ts</script>
+    <script src="displayIcecream.js" defer>displayIcecream.ts</script>
+    <script src="generatedContent.js" defer>generatedContent.ts</script>
+    <script src="script.js" defer>script.ts</script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="canvascontainer">
+        <canvas width="800" height="600">
+
+        </canvas>
+    </div>
+    
+    <div id="selectioncontainer">
+        <div class="outerdiv" id="servecontainer">
+            <h3>Serve Icecreams</h3>
+            <div class="innerservediv">
+                <button id="servedeletebutton">X</button>
+                <button id="serveeditbutton">EDIT</button>
+                <div class="dropdowndiv" id="dropdowndivserve">
+                    <form id="serveform" method="get">
+                        <select class="dropdownselect" id="dropdownserve" name="servecream">
+                            <option value="" disabled selected hidden>Select an Icecream</option>
+                        </select>
+                        <label class="checktypes" id="wafflelabel">
+                            <input type="checkbox" class="checkclass" id="wafflecheck" name="wafflecheck" value="editing">
+                            <span class="spanmark">Waffle</span>
+                        </label>
+                    </form>
+                </div>
+            </div>
+            <p id="pricepreview"></p>
+            <p id="priceprodpreview"></p>
+            <button class="submitbutton" id="servebutton" type="button" form="serveform">Serve</button>
+        </div>
+
+        <div class="outerdiv" id="creatorcontainer">
+            <h3>Create Icecreams</h3>
+            <button class="submitbutton" id="createnewbutton">Create New</button>
+            <div id="creatordiv">
+                <form id="creatorform" method="get">
+                    <input type="text" id="creamtitle" name="title" placeholder="Name">
+                    
+                    <div id="creamdiv">
+                        <select class="dropdownselect" id="dropdowncream0" name="toppings">
+                            <option value="" disabled selected hidden>Select a Topping</option>
+                            <option value="Chocolate">Chocolate</option>
+                            <option value="Vanilla">Vanilla</option>
+                            <option value="Strawberry">Strawberry</option>
+                            <option value="Blueberry">Blueberry</option>
+                            <option value="Banana">Banana</option>
+                            <option value="Smurf">Smurf</option>
+                        </select>
+                        <select class="dropdownselect" id="dropdowncream1" name="toppings">
+                            <option value="" disabled selected hidden>Select a Topping</option>
+                            <option value="Chocolate">Chocolate</option>
+                            <option value="Vanilla">Vanilla</option>
+                            <option value="Strawberry">Strawberry</option>
+                            <option value="Blueberry">Blueberry</option>
+                            <option value="Banana">Banana</option>
+                            <option value="Smurf">Smurf</option>
+                        </select>
+                        <br>
+                        <select class="dropdownselect" id="dropdowncream2" name="toppings">
+                            <option value="" disabled selected hidden>Select a Topping</option>
+                            <option value="Chocolate">Chocolate</option>
+                            <option value="Vanilla">Vanilla</option>
+                            <option value="Strawberry">Strawberry</option>
+                            <option value="Blueberry">Blueberry</option>
+                            <option value="Banana">Banana</option>
+                            <option value="Smurf">Smurf</option>
+                        </select>
+                        <div>
+                            <button class="toppingbutton" id="addcreambutton" type="button">+</button>
+                            <button class="toppingbutton" id="removecreambutton" type="button">-</button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <select class="dropdownselect" id="dropdownsauce" name="sauce">
+                            <option value="" disabled selected hidden>Select a Sauce</option>
+                            <option value="None">None</option>
+                            <option value="Chocolate">Chocolate</option>
+                            <option value="Vanilla">Vanilla</option>
+                            <option value="Strawberry">Strawberry</option>
+                            <option value="Blueberry">Blueberry</option>
+                            <option value="Banana">Banana</option>
+                            <option value="Smurf">Smurf</option>
+                        </select>
+                        <select class="dropdownselect" id="dropdownsprinkles" name="sprinklesType">
+                            <option value="" disabled selected hidden>Select Sprinkles</option>
+                            <option value="None">None</option>
+                            <option value="Chocolate">Chocolate</option>
+                            <option value="Rainbow">Mint</option>
+                        </select>
+                    </div>
+                    
+                    <label class="checktypes" id="whippedlabel">
+                        <input type="checkbox" class="checkclass" id="whippedcheck" name="whippedCream" value="whippedCream">
+                        <span class="spanmark">Whipped Cream</span>
+                    </label>
+                    <p id="creatorpricepara">$ <input type="number" id="creatorprice" name="price" placeholder="Price"></p>
+                </form>
+                <p id="creatorpriceprod"></p>
+                <button class="submitbutton" id="creatorsubmitbutton" type="button" form="creatorform">Add Icecream</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
