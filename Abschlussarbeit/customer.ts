@@ -22,7 +22,7 @@ Quellen: -
         private wasServed: boolean;
         private tooExpensive: boolean;
 
-        public constructor(_posX: number, _posY: number, _speedX: number, _speedY: number, _id: number, _myIcecream: DisplayIcecream, _tooExpensive: boolean = false, _scaling: number = 1, _mood: CustomerMood = CustomerMood.Good, _status: CustomerStatus = CustomerStatus.Arriving, _rating: number = 10, _frameCount: number = -20, _mouthOpen: boolean = false, _selected: boolean = false, _myQueuePos: number = -3, _mySeatPos: number = -1, _wasServed: boolean = false) {
+        public constructor(_posX: number, _posY: number, _speedX: number, _speedY: number, _id: number, _myIcecream: DisplayIcecream, _tooExpensive: boolean, _scaling: number = 1, _mood: CustomerMood = CustomerMood.Good, _status: CustomerStatus = CustomerStatus.Arriving, _rating: number = 10, _frameCount: number = -20, _mouthOpen: boolean = false, _selected: boolean = false, _myQueuePos: number = -3, _mySeatPos: number = -1, _wasServed: boolean = false) {
             super(_posX, _posY, _scaling);
 
             this.speedX = _speedX;
