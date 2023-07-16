@@ -5,7 +5,7 @@ var EIA2SoSe23_Abschlussarbeit;
 Aufgabe: Abschlussarbeit EIA2 SoSe 23
 Name: Jona Ruder
 Matrikel: 265274
-Datum: 15.07.2023
+Datum: 16.07.2023
 Quellen: -
 */
     class Moveable {

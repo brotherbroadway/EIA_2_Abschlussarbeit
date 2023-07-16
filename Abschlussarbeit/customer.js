@@ -5,11 +5,11 @@ var EIA2SoSe23_Abschlussarbeit;
 Aufgabe: Abschlussarbeit EIA2 SoSe 23
 Name: Jona Ruder
 Matrikel: 265274
-Datum: 15.07.2023
+Datum: 16.07.2023
 Quellen: -
 */
     class Customer extends EIA2SoSe23_Abschlussarbeit.Moveable {
-        constructor(_posX, _posY, _speedX, _speedY, _id, _myIcecream, _tooExpensive = false, _scaling = 1, _mood = EIA2SoSe23_Abschlussarbeit.CustomerMood.Good, _status = EIA2SoSe23_Abschlussarbeit.CustomerStatus.Arriving, _rating = 10, _frameCount = -20, _mouthOpen = false, _selected = false, _myQueuePos = -3, _mySeatPos = -1, _wasServed = false) {
+        constructor(_posX, _posY, _speedX, _speedY, _id, _myIcecream, _tooExpensive, _scaling = 1, _mood = EIA2SoSe23_Abschlussarbeit.CustomerMood.Good, _status = EIA2SoSe23_Abschlussarbeit.CustomerStatus.Arriving, _rating = 10, _frameCount = -20, _mouthOpen = false, _selected = false, _myQueuePos = -3, _mySeatPos = -1, _wasServed = false) {
             super(_posX, _posY, _scaling);
             this.speedX = _speedX;
             this.speedY = _speedY;
