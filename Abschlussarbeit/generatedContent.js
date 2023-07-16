@@ -627,7 +627,7 @@ Quellen: -
     }
     // click preview serve button
     function clickServeButton(_event) {
-        console.log("Click Serve Button ID:", EIA2SoSe23_Abschlussarbeit.dropdownServe.selectedIndex, "Waffle?:", EIA2SoSe23_Abschlussarbeit.waffleCheck.checked);
+        //console.log("Click Serve Button ID:", dropdownServe.selectedIndex, "Waffle?:", waffleCheck.checked);
         if (EIA2SoSe23_Abschlussarbeit.dropdownServe.selectedIndex != 0 && EIA2SoSe23_Abschlussarbeit.waitingSelectedID >= 0) {
             // remove money from bank
             EIA2SoSe23_Abschlussarbeit.moneyReductionFrameCount = 12;

@@ -786,7 +786,7 @@ Quellen: -
 
     // click preview serve button
     function clickServeButton(_event: Event): void {
-        console.log("Click Serve Button ID:", dropdownServe.selectedIndex, "Waffle?:", waffleCheck.checked);
+        //console.log("Click Serve Button ID:", dropdownServe.selectedIndex, "Waffle?:", waffleCheck.checked);
 
         if (dropdownServe.selectedIndex != 0 && waitingSelectedID >= 0) {
             // remove money from bank
