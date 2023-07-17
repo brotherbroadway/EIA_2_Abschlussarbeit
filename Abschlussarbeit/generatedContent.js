@@ -359,7 +359,7 @@ Quellen: -
         return prodCost;
     }
     // click create new button
-    function clickCreateNewButton(_event) {
+    function clickCreateNewButton() {
         // reset creator icecream
         EIA2SoSe23_Abschlussarbeit.creatorIcecream = {
             title: "",
@@ -417,7 +417,7 @@ Quellen: -
     }
     EIA2SoSe23_Abschlussarbeit.resetCreatorFields = resetCreatorFields;
     // click submit icecream button
-    function clickSubmitButton(_event) {
+    function clickSubmitButton() {
         return __awaiter(this, void 0, void 0, function* () {
             // if filled out
             if (EIA2SoSe23_Abschlussarbeit.titleField.value != "" &&
@@ -473,7 +473,7 @@ Quellen: -
         });
     }
     // change dropdown selection of toppings
-    function selectToppingChange(_event) {
+    function selectToppingChange() {
         let icecreamTops = "[";
         let toppingCount = 0;
         for (let i = 0; i < EIA2SoSe23_Abschlussarbeit.dropdownToppingsArray.length; i++) {
@@ -509,7 +509,7 @@ Quellen: -
         EIA2SoSe23_Abschlussarbeit.formEmpty = false;
     }
     // change sauce dropdown selection
-    function selectSauceChange(_event) {
+    function selectSauceChange() {
         if (EIA2SoSe23_Abschlussarbeit.dropdownSauce.selectedIndex > 1) {
             EIA2SoSe23_Abschlussarbeit.creatorIcecream.hasSauce = true;
             EIA2SoSe23_Abschlussarbeit.creatorIcecream.sauce = EIA2SoSe23_Abschlussarbeit.dropdownSauce.selectedIndex - 2;
@@ -529,7 +529,7 @@ Quellen: -
         EIA2SoSe23_Abschlussarbeit.formEmpty = false;
     }
     // change sprinkles dropdown selection
-    function selectSprinklesChange(_event) {
+    function selectSprinklesChange() {
         if (EIA2SoSe23_Abschlussarbeit.dropdownSprinkles.selectedIndex > 0) {
             EIA2SoSe23_Abschlussarbeit.creatorIcecream.sprinklesType = EIA2SoSe23_Abschlussarbeit.dropdownSprinkles.selectedIndex - 1;
         }
@@ -544,7 +544,7 @@ Quellen: -
         EIA2SoSe23_Abschlussarbeit.formEmpty = false;
     }
     // change whipped cream check
-    function selectWhippedChange(_event) {
+    function selectWhippedChange() {
         //console.log("WHIP CHECK:", whippedCheck.checked);
         if (EIA2SoSe23_Abschlussarbeit.whippedCheck.checked) {
             EIA2SoSe23_Abschlussarbeit.creatorIcecream.whippedCream = true;
@@ -597,7 +597,7 @@ Quellen: -
         //console.log("Visible Toppings: ", visibleToppings);
     }
     // click remove topping button
-    function clickRemoveToppingButton(_event) {
+    function clickRemoveToppingButton() {
         EIA2SoSe23_Abschlussarbeit.visibleToppings--;
         EIA2SoSe23_Abschlussarbeit.dropdownToppingsArray[EIA2SoSe23_Abschlussarbeit.visibleToppings].setAttribute("style", "display: none");
         // adjust padding of entire div
@@ -626,7 +626,7 @@ Quellen: -
         //console.log("Visible Toppings: ", visibleToppings);
     }
     // click preview serve button
-    function clickServeButton(_event) {
+    function clickServeButton() {
         //console.log("Click Serve Button ID:", dropdownServe.selectedIndex, "Waffle?:", waffleCheck.checked);
         if (EIA2SoSe23_Abschlussarbeit.dropdownServe.selectedIndex != 0 && EIA2SoSe23_Abschlussarbeit.waitingSelectedID >= 0) {
             // remove money from bank
@@ -655,7 +655,7 @@ Quellen: -
         }
     }
     // clik edit serve button
-    function clickEditServeButton(_event) {
+    function clickEditServeButton() {
         console.log("Click Edit Button ID:", EIA2SoSe23_Abschlussarbeit.dropdownServe.selectedIndex);
         // only edit if an icecream is selected
         if (EIA2SoSe23_Abschlussarbeit.dropdownServe.selectedIndex > 0) {
@@ -730,7 +730,7 @@ Quellen: -
         }
     }
     // click delete serve button
-    function clickDeleteServeButton(_event) {
+    function clickDeleteServeButton() {
         return __awaiter(this, void 0, void 0, function* () {
             console.log("Click Delete Button ID:", EIA2SoSe23_Abschlussarbeit.dropdownServe.selectedIndex);
             // if placeholder isn't selected

@@ -340,7 +340,7 @@ Quellen: -
     }
 
     // update selected index while triggering change event
-    function setSelectedIndex(_el: HTMLSelectElement, _index: number){
+    function setSelectedIndex(_el: HTMLSelectElement, _index: number): void {
         _el.selectedIndex = _index;
         _el.dispatchEvent(new Event('change', { bubbles: true }));
 
@@ -441,7 +441,7 @@ Quellen: -
     }
 
     // click create new button
-    function clickCreateNewButton(_event: Event): void {
+    function clickCreateNewButton(): void {
         // reset creator icecream
         creatorIcecream = {
             title: "",
@@ -518,7 +518,7 @@ Quellen: -
     }
 
     // click submit icecream button
-    async function clickSubmitButton(_event: Event): Promise<void> {
+    async function clickSubmitButton(): Promise<void> {
         // if filled out
         if (titleField.value != "" &&
         creatorIcecream.toppingsAmount > 0 &&
@@ -587,7 +587,7 @@ Quellen: -
     }
 
     // change dropdown selection of toppings
-    function selectToppingChange(_event: Event): void {
+    function selectToppingChange(): void {
         let icecreamTops: string = "[";
         let toppingCount: number = 0;
 
@@ -636,7 +636,7 @@ Quellen: -
     }
 
     // change sauce dropdown selection
-    function selectSauceChange(_event: Event): void {
+    function selectSauceChange(): void {
         if (dropdownSauce.selectedIndex > 1) {
             creatorIcecream.hasSauce = true;
 
@@ -661,7 +661,7 @@ Quellen: -
     }
 
     // change sprinkles dropdown selection
-    function selectSprinklesChange(_event: Event): void {
+    function selectSprinklesChange(): void {
         if (dropdownSprinkles.selectedIndex > 0) {
             creatorIcecream.sprinklesType = dropdownSprinkles.selectedIndex - 1;
         } else {
@@ -680,7 +680,7 @@ Quellen: -
     }
 
     // change whipped cream check
-    function selectWhippedChange(_event: Event): void {
+    function selectWhippedChange(): void {
         //console.log("WHIP CHECK:", whippedCheck.checked);
 
         if (whippedCheck.checked) {
@@ -746,7 +746,7 @@ Quellen: -
     }
 
     // click remove topping button
-    function clickRemoveToppingButton(_event: Event): void {
+    function clickRemoveToppingButton(): void {
         visibleToppings--;
 
         dropdownToppingsArray[visibleToppings].setAttribute("style", "display: none");
@@ -785,7 +785,7 @@ Quellen: -
     }
 
     // click preview serve button
-    function clickServeButton(_event: Event): void {
+    function clickServeButton(): void {
         //console.log("Click Serve Button ID:", dropdownServe.selectedIndex, "Waffle?:", waffleCheck.checked);
 
         if (dropdownServe.selectedIndex != 0 && waitingSelectedID >= 0) {
@@ -821,7 +821,7 @@ Quellen: -
     }
 
     // clik edit serve button
-    function clickEditServeButton(_event: Event): void {
+    function clickEditServeButton(): void {
 
         console.log("Click Edit Button ID:", dropdownServe.selectedIndex);
 
@@ -918,7 +918,7 @@ Quellen: -
     }
 
     // click delete serve button
-    async function clickDeleteServeButton(_event: Event): Promise<void> {
+    async function clickDeleteServeButton(): Promise<void> {
         console.log("Click Delete Button ID:", dropdownServe.selectedIndex);
         
         // if placeholder isn't selected
