@@ -429,6 +429,11 @@ Quellen: -
                     console.log("Customer left (no rating)");
                 } else {
                     console.log("Customer left (selection too expensive)");
+
+                    // so it sends a message to the user that people keep leaving because it's too expensive
+                    if (firstServe) {
+                        frameSinceShopOpen = 30;
+                    }
                 }
             }
         }

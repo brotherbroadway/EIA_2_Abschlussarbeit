@@ -366,6 +366,10 @@ Quellen: -
                 }
                 else {
                     console.log("Customer left (selection too expensive)");
+                    // so it sends a message to the user that people keep leaving because it's too expensive
+                    if (EIA2SoSe23_Abschlussarbeit.firstServe) {
+                        EIA2SoSe23_Abschlussarbeit.frameSinceShopOpen = 30;
+                    }
                 }
             }
         }
