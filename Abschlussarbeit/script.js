@@ -82,13 +82,13 @@ Quellen: -
     let customerCount;
     EIA2SoSe23_Abschlussarbeit.shopOpen = false;
     let firstOpen = true;
-    let firstServe = true;
+    EIA2SoSe23_Abschlussarbeit.firstServe = true;
     EIA2SoSe23_Abschlussarbeit.firstIcecream = true;
     EIA2SoSe23_Abschlussarbeit.correctIcecream = true;
     let customerWaiting = false;
     let lastInstructionCount = 25;
     let framesSinceLastSpawn = 0;
-    let frameSinceShopOpen = 0;
+    EIA2SoSe23_Abschlussarbeit.frameSinceShopOpen = 0;
     // element bools and others
     EIA2SoSe23_Abschlussarbeit.createFormOpen = false;
     EIA2SoSe23_Abschlussarbeit.editingForm = false;
@@ -207,31 +207,36 @@ Quellen: -
         let spawnChance = 0.0125 * getSpendAmount();
         //console.log("Chance", Math.floor(spawnChance * 1000) / 10);
         if (EIA2SoSe23_Abschlussarbeit.shopOpen) {
-            // always spawn one customer after first shop open
-            if (frameSinceShopOpen < 0) {
-                console.log("Spawned new customer (tutorial)");
-                spawnNewCustomer();
-                frameSinceShopOpen = 9001;
+            if (EIA2SoSe23_Abschlussarbeit.savedCreamsAmount > 0) {
+                // always spawn one customer after first shop open
+                if (EIA2SoSe23_Abschlussarbeit.frameSinceShopOpen < 0) {
+                    console.log("Spawned new customer (shop opened)");
+                    spawnNewCustomer();
+                    EIA2SoSe23_Abschlussarbeit.frameSinceShopOpen = 9001;
+                }
+                else {
+                    // check - if instructions aren't visible anymore,
+                    //       - spawn since last frame,
+                    //       - random spawn chance,
+                    //       - if there's any icecream even available,
+                    //       - and how many customers there are total
+                    if (lastInstructionCount < 20 && EIA2SoSe23_Abschlussarbeit.savedCreams.length > 0 && customerCount < 13) {
+                        if (framesSinceLastSpawn < 0 && Math.random() < spawnChance) {
+                            console.log("Spawned new customer (" + (Math.floor(spawnChance * 1000) / 10) + "% chance)");
+                            spawnNewCustomer();
+                            framesSinceLastSpawn = 20;
+                        }
+                        else if (framesSinceLastSpawn < -80) {
+                            console.log("Spawned new customer (timer)");
+                            spawnNewCustomer();
+                            framesSinceLastSpawn = 20;
+                        }
+                    }
+                    EIA2SoSe23_Abschlussarbeit.frameSinceShopOpen--;
+                }
             }
             else {
-                // check - if instructions aren't visible anymore,
-                //       - spawn since last frame,
-                //       - random spawn chance,
-                //       - if there's any icecream even available,
-                //       - and how many customers there are total
-                if (lastInstructionCount < 20 && EIA2SoSe23_Abschlussarbeit.savedCreams.length > 0 && customerCount < 13) {
-                    if (framesSinceLastSpawn < 0 && Math.random() < spawnChance) {
-                        console.log("Spawned new customer (" + (Math.floor(spawnChance * 1000) / 10) + "% chance)");
-                        spawnNewCustomer();
-                        framesSinceLastSpawn = 20;
-                    }
-                    else if (framesSinceLastSpawn < -80) {
-                        console.log("Spawned new customer (timer)");
-                        spawnNewCustomer();
-                        framesSinceLastSpawn = 20;
-                    }
-                }
-                frameSinceShopOpen--;
+                console.log("Create icecreams first, so customers will arrive!");
             }
         }
         framesSinceLastSpawn--;
@@ -373,18 +378,18 @@ Quellen: -
                 let openText = "Click the sign to open the shop!";
                 drawInstructions(openText);
             }
-            else if (firstServe && customerWaiting) {
+            else if (EIA2SoSe23_Abschlussarbeit.firstServe && customerWaiting) {
                 // first customer serving text
                 let serveText = "Click a customer's face to select them!";
                 drawInstructions(serveText);
             }
-            else if (EIA2SoSe23_Abschlussarbeit.firstIcecream && !firstServe && customerWaiting) {
+            else if (EIA2SoSe23_Abschlussarbeit.firstIcecream && !EIA2SoSe23_Abschlussarbeit.firstServe && customerWaiting) {
                 // first icecream serving text
                 let iceText = "Now select the icecream they want";
                 let iceText2 = "from your list to serve them!";
                 drawInstructions(iceText, iceText2);
             }
-            else if (!EIA2SoSe23_Abschlussarbeit.firstIcecream && !firstServe) {
+            else if (!EIA2SoSe23_Abschlussarbeit.firstIcecream && !EIA2SoSe23_Abschlussarbeit.firstServe) {
                 // right/wrong serving text
                 let correctText = "Nice one!";
                 let correctText2 = "Keep it up!";
@@ -455,7 +460,7 @@ Quellen: -
                     console.log("Opened shop!");
                     EIA2SoSe23_Abschlussarbeit.shopOpen = true;
                     firstOpen = false;
-                    frameSinceShopOpen = 10;
+                    EIA2SoSe23_Abschlussarbeit.frameSinceShopOpen = 10;
                     framesSinceLastSpawn = 50;
                     // hide creator div, edit, delete elements
                     fullCreatorDiv.setAttribute("style", "display: none");
@@ -495,7 +500,7 @@ Quellen: -
             EIA2SoSe23_Abschlussarbeit.waitingSelectedID = EIA2SoSe23_Abschlussarbeit.waitingPosTaken[_waitPos];
             console.log("Selected a customer"); //console.log("Selected", waitingSelectedID);
             EIA2SoSe23_Abschlussarbeit.allCustomers[EIA2SoSe23_Abschlussarbeit.waitingSelectedID].selected = true;
-            firstServe = false;
+            EIA2SoSe23_Abschlussarbeit.firstServe = false;
         }
         else if (EIA2SoSe23_Abschlussarbeit.waitingPosTaken[_waitPos] == EIA2SoSe23_Abschlussarbeit.waitingSelectedID && EIA2SoSe23_Abschlussarbeit.allCustomers[EIA2SoSe23_Abschlussarbeit.waitingPosTaken[_waitPos]].status == CustomerStatus.AskingForIcecream) { // unselect wait pos customer
             console.log("Unselected Customer (by direct click)");

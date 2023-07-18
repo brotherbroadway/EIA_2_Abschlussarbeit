@@ -83,13 +83,13 @@ Quellen: -
     let customerCount: number;
     export let shopOpen: boolean = false;
     let firstOpen: boolean = true;
-    let firstServe: boolean = true;
+    export let firstServe: boolean = true;
     export let firstIcecream: boolean = true;
     export let correctIcecream: boolean = true;
     let customerWaiting: boolean = false;
     let lastInstructionCount: number = 25;
     let framesSinceLastSpawn: number = 0;
-    let frameSinceShopOpen: number = 0;
+    export let frameSinceShopOpen: number = 0;
 
     // element bools and others
     export let createFormOpen: boolean = false;
@@ -238,33 +238,37 @@ Quellen: -
         //console.log("Chance", Math.floor(spawnChance * 1000) / 10);
 
         if (shopOpen) {
+            if (savedCreamsAmount > 0) {
             // always spawn one customer after first shop open
-            if (frameSinceShopOpen < 0) {
-                console.log("Spawned new customer (tutorial)");
-                spawnNewCustomer();
+                if (frameSinceShopOpen < 0) {
+                    console.log("Spawned new customer (shop opened)");
+                    spawnNewCustomer();
 
-                frameSinceShopOpen = 9001;
-            } else {
-                // check - if instructions aren't visible anymore,
-                //       - spawn since last frame,
-                //       - random spawn chance,
-                //       - if there's any icecream even available,
-                //       - and how many customers there are total
-                if (lastInstructionCount < 20 && savedCreams.length > 0 && customerCount < 13) {
-                    if (framesSinceLastSpawn < 0 && Math.random() < spawnChance) {
-                        console.log("Spawned new customer (" + (Math.floor(spawnChance * 1000) / 10)+ "% chance)");
-                        spawnNewCustomer();
-            
-                        framesSinceLastSpawn = 20;
-                    } else if (framesSinceLastSpawn < -80) {
-                        console.log("Spawned new customer (timer)");
-                        spawnNewCustomer();
-            
-                        framesSinceLastSpawn = 20;
+                    frameSinceShopOpen = 9001;
+                } else {
+                    // check - if instructions aren't visible anymore,
+                    //       - spawn since last frame,
+                    //       - random spawn chance,
+                    //       - if there's any icecream even available,
+                    //       - and how many customers there are total
+                    if (lastInstructionCount < 20 && savedCreams.length > 0 && customerCount < 13) {
+                        if (framesSinceLastSpawn < 0 && Math.random() < spawnChance) {
+                            console.log("Spawned new customer (" + (Math.floor(spawnChance * 1000) / 10)+ "% chance)");
+                            spawnNewCustomer();
+                
+                            framesSinceLastSpawn = 20;
+                        } else if (framesSinceLastSpawn < -80) {
+                            console.log("Spawned new customer (timer)");
+                            spawnNewCustomer();
+                
+                            framesSinceLastSpawn = 20;
+                        }
                     }
-                }
 
-                frameSinceShopOpen--;
+                    frameSinceShopOpen--;
+                }
+            } else {
+                console.log("Create icecreams first, so customers will arrive!");
             }
         }
 
